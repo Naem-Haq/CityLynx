@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="David" />
+        <module name="simple-calculato" />
+        <module name="CityLynx" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CityLynx" target="1.7" />
+      <module name="David" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
