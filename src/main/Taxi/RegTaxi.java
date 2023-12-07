@@ -1,4 +1,4 @@
-package Taxi;
+package main.Taxi;
 
 public class RegTaxi extends Taxi {
     public RegTaxi() {

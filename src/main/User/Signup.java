@@ -1,4 +1,4 @@
-package User;
+package main.User;
 
 import java.io.FileWriter;
 import java.io.IOException;
