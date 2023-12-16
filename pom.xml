@@ -46,7 +46,7 @@
                             <manifest>
                                 <addClasspath>true</addClasspath>
                                 <classpathPrefix>lib</classpathPrefix>
-                                <mainClass>package.class-name</mainClass>
+                                <mainClass>src/main.Main</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
