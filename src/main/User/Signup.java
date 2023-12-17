@@ -1,8 +1,7 @@
 package main.User;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.List;
+import java.util.Scanner;
 
 public class Signup {
     private List<User> users;
@@ -12,17 +11,27 @@ public class Signup {
     }
 
     public void register(String username, String password) {
-        users.add(new Passenger(username, password));
-        saveToCSV();
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                System.out.println("Username already exists. Please choose a different one.");
+                return;
+            }
+        }
+
+        // If username is unique, add the new user
+        User newUser = new User(username, password);
+        users.add(newUser);
+        System.out.println("User registration successful!");
     }
 
-    private void saveToCSV() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("users.csv"))) {
-            for (User user : users) {
-                writer.println(user.username + "," + user.password);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void registerUser() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter new username: ");
+        String username = scanner.next();
+        System.out.print("Enter new password: ");
+        String password = scanner.next();
+
+        register(username, password);
     }
 }

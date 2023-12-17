@@ -1,6 +1,7 @@
 package main;
 
 import main.Map.GridMapExampleCLI;
+import main.Taxi.*;
 import main.User.Login;
 import main.User.Signup;
 import main.User.User;
@@ -15,12 +16,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         List<User> users = loadUsersFromCSV();
+        List<Taxi> taxis = loadTaxisFromCSV();
+
         Login login = new Login(users);
         Signup signup = new Signup(users);
 
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        boolean loggedIn = false;
+
+        while (!loggedIn) {
+            System.out.println("Thanking you for choosing citylynx. Please choose the following:");
             System.out.println("1. Login");
             System.out.println("2. Signup");
             System.out.println("3. Exit");
@@ -40,7 +46,10 @@ public class Main {
 
                         // Display the map after successful login
                         GridMapExampleCLI mapExample = new GridMapExampleCLI();
+                        mapExample.placeTaxisOnMap(taxis);
                         mapExample.printGrid();
+
+                        loggedIn = true; // Set the flag to exit the loop after successful login
                     } else {
                         System.out.println("Invalid username or password");
                     }
@@ -78,13 +87,44 @@ public class Main {
                     users.add(new User(parts[0], parts[1]));
                 }
             }
-
-            // Print loaded users
-            System.out.println("Loaded users: " + users);
-
         } catch (IOException e) {
-            // Ignore if the file doesn't exist
+            e.printStackTrace();
         }
         return users;
+    }
+
+    private static List<Taxi> loadTaxisFromCSV() {
+        List<Taxi> taxis = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Drivers.csv"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 3) {
+                    String driverId = parts[0];
+                    String name = parts[1];
+                    String taxiType = parts[2];
+
+                    Taxi taxi;
+                    switch (taxiType.toLowerCase()) {
+                        case "reg":
+                            taxi = new RegTaxi(driverId);
+                            break;
+                        case "xl":
+                            taxi = new XLTaxi(driverId);
+                            break;
+                        case "luxury":
+                            taxi = new LuxuryTaxi(driverId);
+                            break;
+                        default:
+                            // Handle invalid taxi type
+                            continue;
+                    }
+                    taxis.add(taxi);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return taxis;
     }
 }
