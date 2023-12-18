@@ -1,0 +1,115 @@
+{
+  "nodes": {
+    "University of Limerick" : {
+      "x" : 100,
+      "y" : 100,
+      "connections": [
+        "PLassey",
+        "Cappavilla",
+        "Groody",
+        "Dromroe",
+        "City Centre"
+      ]
+    },
+    "Plassey": {
+      "x" : 0,
+      "y" : 500,
+      "connections" : [
+        "University",
+        "Groody",
+        "City Centre"
+      ]
+    },
+    "Cappavilla": {
+      "x" : 500,
+      "y" : 100,
+      "connections": [
+        "University"
+      ]
+    },
+    "Groody": {
+      "x" : 550,
+      "y" : 50,
+      "connections": [
+        "Plassey",
+        "City Centre"
+      ]
+    },
+    "Dromroe": {
+      "x" : 340,
+      "y" : 150,
+      "connections": [
+        "village",
+        "poshtown",
+        "taxi depot"
+      ]
+    },
+    "City Centre": {
+      "x" : 600,
+      "y" : 400,
+      "connections": [
+        "city center",
+        "poshtown",
+        "the school of education"
+      ]
+    },
+    "Crescent" : {
+      "x" : 400,
+      "y" : 350,
+      "connections": [
+        "north suburb",
+        "the school of education"
+      ]
+    },
+    "Icon": {
+      "x" : 420,
+      "y" : 400,
+      "connections": [
+        "poshtown",
+        "north suburb"
+      ]
+    },
+    "Arthur's Quay": {
+      "x" : 420,
+      "y" : 400,
+      "connections": [
+        "poshtown",
+        "north suburb"
+      ]
+    },
+    "Train Station": {
+      "x" : 420,
+      "y" : 400,
+      "connections": [
+        "poshtown",
+        "north suburb"
+      ]
+    },
+    "Hurlers Bar" : {
+      "x" : 250,
+      "y" : 20,
+      "connections": [
+        "west suburb",
+        "city center"
+      ],
+      "taxis": {
+        "taxi 1" : {
+          "price" : 2,
+          "speed" : 5
+        },
+        "taxi 2" : {
+          "price" : 3,
+          "speed" : 6
+        },
+        "taxi 3" : {
+          "price" : 4,
+          "speed" : 7
+        },
+        "taxi 4" : {
+          "price" : 1.5,
+          "speed" : 4
+        }
+      }
+    }
+  }
+}
