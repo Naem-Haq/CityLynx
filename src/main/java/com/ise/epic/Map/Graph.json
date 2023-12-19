@@ -17,99 +17,89 @@
       "connections" : [
         "University",
         "Groody",
-        "City Centre"
+        "Dromroe",
+        "Hurlers Bar"
       ]
     },
     "Cappavilla": {
       "x" : 500,
       "y" : 100,
       "connections": [
-        "University"
+        "University",
+        "Dromroe",
+        "Hurlers Bar"
       ]
     },
     "Groody": {
       "x" : 550,
       "y" : 50,
       "connections": [
+        "University",
         "Plassey",
-        "City Centre"
+        "City Centre",
+        "Hurlers Bar",
+        "Crescent"
       ]
     },
     "Dromroe": {
       "x" : 340,
       "y" : 150,
       "connections": [
-        "village",
-        "poshtown",
-        "taxi depot"
+        "University",
+        "Plassey",
+        "Cappavilla",
+        "Hurlers Bar"
       ]
     },
     "City Centre": {
       "x" : 600,
       "y" : 400,
       "connections": [
-        "city center",
-        "poshtown",
-        "the school of education"
+        "University",
+        "Angel Lane",
+        "ICON",
+        "Arthur's Quay",
+        "Train Station"
       ]
     },
     "Crescent" : {
       "x" : 400,
       "y" : 350,
       "connections": [
-        "north suburb",
-        "the school of education"
+        "Plassey"
       ]
     },
-    "Icon": {
+    "ICON": {
       "x" : 420,
       "y" : 400,
       "connections": [
-        "poshtown",
-        "north suburb"
+        "City Centre",
+        "Angel LAne"
       ]
     },
     "Arthur's Quay": {
       "x" : 420,
       "y" : 400,
       "connections": [
-        "poshtown",
-        "north suburb"
+        "City Centre"
       ]
     },
     "Train Station": {
       "x" : 420,
       "y" : 400,
       "connections": [
-        "poshtown",
-        "north suburb"
+        "City Centre"
       ]
     },
     "Hurlers Bar" : {
       "x" : 250,
       "y" : 20,
       "connections": [
-        "west suburb",
-        "city center"
-      ],
-      "taxis": {
-        "taxi 1" : {
-          "price" : 2,
-          "speed" : 5
-        },
-        "taxi 2" : {
-          "price" : 3,
-          "speed" : 6
-        },
-        "taxi 3" : {
-          "price" : 4,
-          "speed" : 7
-        },
-        "taxi 4" : {
-          "price" : 1.5,
-          "speed" : 4
-        }
-      }
+        "Plassey",
+        "Cappavilla",
+        "Dromroe",
+        "Groody"
+      ]
     }
   }
 }

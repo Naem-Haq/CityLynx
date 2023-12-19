@@ -5,13 +5,15 @@ import com.ise.epic.Taxi.*;
 import com.ise.epic.User.Login;
 import com.ise.epic.User.Signup;
 import com.ise.epic.User.User;
+import com.ise.epic.DataStructures.ArrayListImplementation;
+import static com.ise.epic.User.Login.loadUsersFromCSV;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -77,24 +79,8 @@ public class Main {
         }
     }
 
-    private static List<User> loadUsersFromCSV() {
-        List<User> users = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("users.csv"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    users.add(new User(parts[0], parts[1]));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return users;
-    }
-
     private static List<Taxi> loadTaxisFromCSV() {
-        List<Taxi> taxis = new ArrayList<>();
+        List<Taxi> taxis = new ArrayListImplementation<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Drivers.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {

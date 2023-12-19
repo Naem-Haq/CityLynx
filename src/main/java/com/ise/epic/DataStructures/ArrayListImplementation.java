@@ -1,11 +1,8 @@
 package com.ise.epic.DataStructures;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
-public class ArrayList<E> implements List<E> {
+public class ArrayListImplementation<E> implements List<E> {
 
     void inBounds(int i){
         if(i < 0 || i >= this.size){
@@ -15,7 +12,7 @@ public class ArrayList<E> implements List<E> {
 
     Object[] data;
     int size;
-    public ArrayList(){
+    public ArrayListImplementation(){
         this.data = new Object[1];
         this.size = 0;
     }
@@ -42,9 +39,9 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public Iterator<E> iterator() {
-        ArrayList<E> al = this;
+        ArrayListImplementation<E> al = this;
         return new Iterator<E>() {
-            ArrayList<E> l = al;
+            ArrayListImplementation<E> l = al;
             int index = 0;
             @Override
             public boolean hasNext() {
@@ -216,9 +213,9 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public ListIterator<E> listIterator() {
-        ArrayList<E> al = this;
+        ArrayListImplementation<E> al = this;
         return new ListIterator<E>() {
-            ArrayList<E> l = al;
+            ArrayListImplementation<E> l = al;
             int index = 0;
             @Override
             public boolean hasNext() {
@@ -269,9 +266,9 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public ListIterator<E> listIterator(int i) {
-        ArrayList<E> al = this;
+        ArrayListImplementation<E> al = this;
         return new ListIterator<E>() {
-            ArrayList<E> l = al;
+            ArrayListImplementation<E> l = al;
             int index = i;
             @Override
             public boolean hasNext() {

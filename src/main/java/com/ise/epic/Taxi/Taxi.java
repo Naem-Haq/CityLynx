@@ -11,6 +11,7 @@ public class Taxi {
         this.basePrice = basePrice;
     }
 
+
     public double calculateFare(double distance) {
         // Base fare + additional fare based on distance
         return basePrice + (distance / 750) * 1;

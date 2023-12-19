@@ -1,5 +1,10 @@
 package com.ise.epic.User;
 
+import com.ise.epic.DataStructures.ArrayListImplementation;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,6 +22,22 @@ public class Login {
             }
         }
         return false;
+    }
+
+    public static List<User> loadUsersFromCSV() {
+        List<User> users = new ArrayListImplementation<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("users.csv"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
+                    users.add(new User(parts[0], parts[1]));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     public void loginUser() {
