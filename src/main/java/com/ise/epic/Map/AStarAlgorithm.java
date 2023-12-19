@@ -1,4 +1,5 @@
 package com.ise.epic.Map;
+
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
@@ -8,7 +9,7 @@ public class AStarAlgorithm {
         PriorityQueue<WeightedNode> openSet = new PriorityQueue<>();
         HashSet<Node> closedSet = new HashSet<>();
 
-        WeightedNode startNode = new WeightedNode(start, 0, 0, null);
+        WeightedNode startNode = new WeightedNode(start, 0, null);
         openSet.add(startNode);
 
         while (!openSet.isEmpty()) {
@@ -27,11 +28,21 @@ public class AStarAlgorithm {
                 }
 
                 double newTraversedDistance = current.totalDistance() + current.getNode().distanceFrom(neighbor);
-                WeightedNode neighborNode = new WeightedNode(neighbor, 0, newTraversedDistance, current);
+                WeightedNode neighborNode = new WeightedNode(neighbor, newTraversedDistance, current);
 
-                if (!openSet.contains(neighborNode)) {
-                    openSet.add(neighborNode);
+                // Check if the neighbor is already in openSet and has a shorter distance
+                if (openSet.contains(neighborNode)) {
+                    WeightedNode existingNeighbor = openSet.stream()
+                            .filter(node -> node.equals(neighborNode))
+                            .findFirst()
+                            .orElse(null);
+
+                    if (existingNeighbor != null && existingNeighbor.totalDistance() <= newTraversedDistance) {
+                        continue; // Skip this neighbor, as the existing path is shorter
+                    }
                 }
+
+                openSet.add(neighborNode);
             }
         }
 
@@ -39,4 +50,3 @@ public class AStarAlgorithm {
         return -1;
     }
 }
-
