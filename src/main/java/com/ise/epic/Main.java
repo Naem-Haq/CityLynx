@@ -132,7 +132,7 @@ public class Main {
         TaxiMovement.moveTaxi(selectedTaxi, destinationNode, mapExample);
 
         // Display the updated map
-        mapExample.printGrid(); // Add this line to print the updated map
+        mapExample.printGrid();
     }
 
     private static List<Taxi> findAvailableTaxis(List<Taxi> allTaxis, String taxiType, Node currentNode) {

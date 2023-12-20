@@ -2,9 +2,6 @@ package com.ise.epic.User;
 
 import com.ise.epic.Taxi.RegTaxi;
 import com.ise.epic.Taxi.Taxi;
-import com.ise.epic.Taxi.XLTaxi;
-import com.ise.epic.Taxi.LuxuryTaxi;
-import com.ise.epic.DataStructures.ArrayListImplementation;
 
 import java.util.List;
 import java.util.Scanner;

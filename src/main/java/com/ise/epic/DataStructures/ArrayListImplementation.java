@@ -4,13 +4,16 @@ import java.util.*;
 
 public class ArrayListImplementation<E> implements List<E> {
 
+    // This is a method to check if the index is within bounds
     void inBounds(int i){
         if(i < 0 || i >= this.size){
             throw new IndexOutOfBoundsException();
         }
     }
 
+    // An Array to store elements
     Object[] data;
+    // variable to track number of elements in the ArrayList
     int size;
     public ArrayListImplementation(){
         this.data = new Object[1];
@@ -36,6 +39,7 @@ public class ArrayListImplementation<E> implements List<E> {
         }
         return false;
     }
+
 
     @Override
     public Iterator<E> iterator() {

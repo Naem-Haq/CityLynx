@@ -3,9 +3,12 @@ package com.ise.epic.DataStructures;
 import java.util.*;
 
 public class HashMapImplementation<K, V> implements Map<K, V> {
+    // Array of Entry Objects - purpose to store key value pairs
     private Entry<K, V>[] table;
     private static final int INITIAL_CAPACITY = 16;
+    // Load factor threshold to determine when resize array
     private static final float LOAD_FACTOR_THRESHOLD = 0.75f;
+    // number of key value pairs on map
     private int size;
 
     public HashMapImplementation() {
@@ -13,6 +16,7 @@ public class HashMapImplementation<K, V> implements Map<K, V> {
         size = 0;
     }
 
+    // Implementation of the Map interface methods
     @Override
     public int size() {
         return size;

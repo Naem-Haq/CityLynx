@@ -34,6 +34,7 @@ public class WeightedNode implements Comparable<WeightedNode> {
     }
 
     public double totalDistance() {
+
         return this.travelDistance;
     }
 
