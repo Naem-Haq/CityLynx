@@ -98,11 +98,11 @@ public class Main {
         System.out.print("Enter taxi type (RegTaxi, XLTaxi, LuxuryTaxi): ");
         String taxiType = scanner.next();
 
-        // Find available taxis of the specified type
-        List<Taxi> availableTaxis = findAvailableTaxis(taxis, taxiType);
+        // Find available taxis of the specified type at the pickup node
+        List<Taxi> availableTaxis = findAvailableTaxis(taxis, taxiType, pickupNode);
 
         if (availableTaxis.isEmpty()) {
-            System.out.println("No available taxis of the specified type.");
+            System.out.println("No available taxis of the specified type at the pickup node.");
             return;
         }
 
@@ -135,17 +135,16 @@ public class Main {
         mapExample.printGrid(); // Add this line to print the updated map
     }
 
-    private static List<Taxi> findAvailableTaxis(List<Taxi> allTaxis, String taxiType) {
+    private static List<Taxi> findAvailableTaxis(List<Taxi> allTaxis, String taxiType, Node currentNode) {
         List<Taxi> availableTaxis = new ArrayListImplementation<>();
         for (Taxi taxi : allTaxis) {
-            System.out.println("Checking taxi: " + taxi);
-            if (taxi != null && taxi.getClass().getSimpleName().equalsIgnoreCase(taxiType)) {
-                System.out.println("Adding taxi: " + taxi);
+            if (taxi != null && taxi.getClass().getSimpleName().equalsIgnoreCase(taxiType) && taxi.isAvailable() && taxi.getCurrentNode() == currentNode) {
                 availableTaxis.add(taxi);
             }
         }
         return availableTaxis;
     }
+
 
 
     private static List<Taxi> loadTaxisFromCSV() {
