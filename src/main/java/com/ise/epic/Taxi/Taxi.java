@@ -1,18 +1,21 @@
 package com.ise.epic.Taxi;
 
 public class Taxi {
-    private String taxiId;
-    private int capacity;
+    private String driverId;
+    private String name;
+    private String taxiType;
+    private boolean available;
     private double basePrice;
+    private int capacity;
 
-
-    public Taxi(String taxiId, int capacity, double basePrice) {
-        this.taxiId = taxiId;
-        this.capacity = capacity;
-        this.basePrice = basePrice;
+    public Taxi(String driverId, String name, String taxiType, boolean available) {
+        this.driverId = driverId;
+        this.name = name;
+        this.taxiType = taxiType;
+        this.available = available;
     }
 
-    public Taxi(String driverId, String driverName, String taxiType) {
+    public Taxi(String driverId, int driverName, int taxiType) {
     }
 
     public double calculateFare(double distance) {
@@ -25,7 +28,7 @@ public class Taxi {
     }
 
     public String getTaxiId() {
-        return taxiId;
+        return driverId;
     }
 
     public Object getDriverId() {
@@ -41,5 +44,16 @@ public class Taxi {
     }
 
     public void setLocation(int randomRow, int randomCol) {
+    }
+
+    public Location getLocation() {
+        return null;
+    }
+
+    public boolean isAvailable() {
+        return false;
+    }
+
+    public void setAvailable(boolean available) {
     }
 }

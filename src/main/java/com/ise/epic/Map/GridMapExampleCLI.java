@@ -2,6 +2,10 @@ package com.ise.epic.Map;
 
 import com.ise.epic.Taxi.Taxi;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -11,6 +15,7 @@ public class GridMapExampleCLI {
     private static final int COLS = 60;
 
     private char[][] grid;
+    private Set<Taxi> available;
 
     public GridMapExampleCLI() {
         grid = new char[ROWS][COLS];
@@ -18,8 +23,13 @@ public class GridMapExampleCLI {
     }
 
     public void placeTaxisOnMap(List<Taxi> taxis) {
-        for (Taxi taxi : taxis) {
-            placeTaxiOnMap(taxi);
+        if (taxis != null) {
+            for (Taxi taxi : taxis) {
+                placeTaxiOnMap(taxi);
+            }
+        } else {
+            System.out.println("Error: The taxis are unavailable.");
+            // You might want to handle this error appropriately based on your application's requirements.
         }
     }
 
@@ -57,23 +67,43 @@ public class GridMapExampleCLI {
     }
 
     public void printGrid() {
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLS; col++) {
-                System.out.print(grid[row][col] + " ");
+        try (FileReader reader = new FileReader("src/main/java/com/ise/epic/Map/Map")) {
+            int character;
+            while ((character = reader.read()) != -1) {
+                System.out.print((char) character);
             }
-            System.out.println();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public Set<Taxi> getAvailableTaxis(Node pickup, Graph graph) {
-        Set<Taxi> o = null;
-        return o;
+    public void updateTaxiLocations(List<Taxi> taxis) {
+        initializeGrid(); // Reset the grid to clear previous taxi positions
+        placeTaxisOnMap(taxis); // Place taxis on the updated grid
+        printGrid(); // Print the updated map with taxis
     }
+
+    public Set<Taxi> getAvailableTaxis(Node pickup, Graph graph, List<Taxi> allTaxis) {
+        Set<Taxi> availableTaxis = new HashSet<>();
+
+        for (Taxi taxi : allTaxis) {
+            if (taxi.isAvailable()) {
+                availableTaxis.add(taxi);
+            }
+        }
+
+        return availableTaxis;
+    }
+
 
     public void placeTaxiOnMap(Taxi taxi, int destinationRow, int destinationCol) {
     }
 
     public Node findNodeByName(String destinationNodeName) {
         return null;
+    }
+
+    public Set<Taxi> getAvailableTaxis(Node pickup, Graph graph) {
+        return available;
     }
 }

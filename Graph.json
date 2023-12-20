@@ -3,56 +3,67 @@
     "University of Limerick": {
       "x": 100,
       "y": 100,
+      "loc": "U",
       "connections": ["Plassey", "Cappavilla", "Groody", "Dromroe", "City Centre"]
     },
     "Plassey": {
       "x": 0,
       "y": 500,
+      "loc": "P",
       "connections": ["University", "Groody", "Dromroe", "Hurlers Bar"]
     },
     "Cappavilla": {
       "x": 500,
       "y": 100,
+      "loc": "C",
       "connections": ["University", "Dromroe", "Hurlers Bar"]
     },
     "Groody": {
       "x": 550,
       "y": 50,
+      "loc": "G",
       "connections": ["University", "Plassey", "City Centre", "Hurlers Bar", "Crescent"]
     },
     "Dromroe": {
       "x": 340,
       "y": 150,
+      "loc": "D",
       "connections": ["University", "Plassey", "Cappavilla", "Hurlers Bar"]
     },
     "City Centre": {
       "x": 600,
       "y": 400,
+      "loc": "L",
       "connections": ["University", "Angel Lane", "ICON", "Arthur's Quay", "Train Station"]
     },
     "Crescent": {
       "x": 400,
       "y": 350,
+      "loc": "S",
       "connections": ["Plassey"]
     },
     "ICON": {
       "x": 700,
       "y": 300,
+      "loc": "I",
       "connections": ["City Centre", "Angel Lane"]
     },
     "Arthur's Quay": {
       "x": 450,
       "y": 450,
+      "loc": "Q",
       "connections": ["City Centre"]
     },
     "Train Station": {
       "x": 300,
       "y": 550,
+      "loc": "T",
       "connections": ["City Centre"]
     },
     "Hurlers Bar": {
       "x": 250,
       "y": 20,
+      "loc": "H",
       "connections": ["Plassey", "Cappavilla", "Dromroe", "Groody"]
     }
   }

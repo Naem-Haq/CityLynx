@@ -81,6 +81,7 @@ public class Main {
             }
         }
     }
+
     private static void handleUserInteraction(Scanner scanner, GridMapExampleCLI mapExample, List<Taxi> taxis) {
         System.out.print("Enter destination node: ");
         String destinationNodeName = scanner.next();
@@ -94,7 +95,7 @@ public class Main {
         Node pickupNode = mapExample.findNodeByName(pickupNodeName);
 
         // Prompt user for taxi type
-        System.out.print("Enter taxi type (reg, xl, luxury): ");
+        System.out.print("Enter taxi type (RegTaxi, XLTaxi, LuxuryTaxi): ");
         String taxiType = scanner.next();
 
         // Find available taxis of the specified type
@@ -131,13 +132,15 @@ public class Main {
         TaxiMovement.moveTaxi(selectedTaxi, destinationNode, mapExample);
 
         // Display the updated map
-        mapExample.printGrid();
+        mapExample.printGrid(); // Add this line to print the updated map
     }
 
     private static List<Taxi> findAvailableTaxis(List<Taxi> allTaxis, String taxiType) {
         List<Taxi> availableTaxis = new ArrayListImplementation<>();
         for (Taxi taxi : allTaxis) {
-            if (taxi.getClass().getSimpleName().equalsIgnoreCase(taxiType)) {
+            System.out.println("Checking taxi: " + taxi);
+            if (taxi != null && taxi.getClass().getSimpleName().equalsIgnoreCase(taxiType)) {
+                System.out.println("Adding taxi: " + taxi);
                 availableTaxis.add(taxi);
             }
         }
@@ -147,14 +150,15 @@ public class Main {
 
     private static List<Taxi> loadTaxisFromCSV() {
         List<Taxi> taxis = new ArrayListImplementation<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/Drivers.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Drivers.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 3) {
+                if (parts.length == 4) {
                     String driverId = parts[0];
                     String name = parts[1];
                     String taxiType = parts[2];
+                    boolean available = Boolean.parseBoolean(parts[3]);
 
                     Taxi taxi;
                     switch (taxiType.toLowerCase()) {
@@ -171,6 +175,7 @@ public class Main {
                             // Handle invalid taxi type
                             continue;
                     }
+                    taxi.setAvailable(available); // Set the availability
                     taxis.add(taxi);
                 }
             }
@@ -179,4 +184,5 @@ public class Main {
         }
         return taxis;
     }
+
 }

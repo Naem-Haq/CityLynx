@@ -1,11 +1,15 @@
 package com.ise.epic.Map;
 import com.ise.epic.DataStructures.ArrayListImplementation;
+import com.ise.epic.Taxi.Location;
+
 import java.util.HashSet;
 
 public class Node {
     private String name;
     private int x;
     private int y;
+
+    private String loc;
     private ArrayListImplementation<Vertex> connections;
 
     public Node(String name, int x, int y) {
@@ -52,6 +56,10 @@ public class Node {
     }
 
     public guru.nidi.graphviz.model.Node name() {
+        return null;
+    }
+
+    public Location getLocation() {
         return null;
     }
 }

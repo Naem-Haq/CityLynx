@@ -11,20 +11,20 @@ public class TaxiMovement {
             return;
         }
 
-//        // Retrieve current taxi location
-//        int currentRow = taxi.getLocation().getRow();
-//        int currentCol = taxi.getLocation().getCol();
-//
-//        // Retrieve destination node location
-//        int destinationRow = destinationNode.getLocation().getRow();
-//        int destinationCol = destinationNode.getLocation().getCol();
-//
-//        // Move the taxi to the destination
-//        map.clearGridLocation(currentRow, currentCol);
-//        map.placeTaxiOnMap(taxi, destinationRow, destinationCol);
-//
-//        // Update taxi location
-//        taxi.setLocation(destinationRow, destinationCol);
+        // Retrieve current taxi location
+        int currentRow = taxi.getLocation().getRow();
+        int currentCol = taxi.getLocation().getCol();
+
+        // Retrieve destination node location
+        int destinationRow = destinationNode.getLocation().getRow();
+        int destinationCol = destinationNode.getLocation().getCol();
+
+        // Move the taxi to the destination
+        map.clearGridLocation(currentRow, currentCol);
+        map.placeTaxiOnMap(taxi, destinationRow, destinationCol);
+
+        // Update taxi location
+        taxi.setLocation(destinationRow, destinationCol);
 
         // Print the updated map
         map.printGrid();
