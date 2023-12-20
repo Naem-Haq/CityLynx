@@ -1,6 +1,7 @@
 package com.ise.epic.User;
 
 import com.ise.epic.DataStructures.ArrayListImplementation;
+import com.ise.epic.Taxi.Taxi;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -40,7 +41,7 @@ public class Login {
         return users;
     }
 
-    public void loginUser() {
+    public void loginUser(List<Taxi> taxis) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter username: ");
@@ -50,6 +51,11 @@ public class Login {
 
         if (authenticate(username, password)) {
             System.out.println("Login successful!");
+
+            if (Manager.isAdmin(username, password)) {
+                Manager.handleAdminOptions(taxis);
+            }
+
             // Additional logic if needed after successful login
         } else {
             System.out.println("Invalid username or password");

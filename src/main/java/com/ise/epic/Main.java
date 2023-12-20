@@ -1,6 +1,7 @@
 package com.ise.epic;
 
 import com.ise.epic.Map.GridMapExampleCLI;
+import com.ise.epic.Map.Node;
 import com.ise.epic.Taxi.*;
 import com.ise.epic.User.Login;
 import com.ise.epic.User.Signup;
@@ -51,6 +52,8 @@ public class Main {
                         mapExample.placeTaxisOnMap(taxis);
                         mapExample.printGrid();
 
+                        handleUserInteraction(scanner, mapExample, taxis);
+
                         loggedIn = true; // Set the flag to exit the loop after successful login
                     } else {
                         System.out.println("Invalid username or password");
@@ -78,6 +81,69 @@ public class Main {
             }
         }
     }
+    private static void handleUserInteraction(Scanner scanner, GridMapExampleCLI mapExample, List<Taxi> taxis) {
+        System.out.print("Enter destination node: ");
+        String destinationNodeName = scanner.next();
+
+        // Find the destination node in the map
+        Node destinationNode = mapExample.findNodeByName(destinationNodeName);
+
+        // Prompt user for pickup node (assuming you have a method to find nodes by name)
+        System.out.print("Enter pickup node: ");
+        String pickupNodeName = scanner.next();
+        Node pickupNode = mapExample.findNodeByName(pickupNodeName);
+
+        // Prompt user for taxi type
+        System.out.print("Enter taxi type (reg, xl, luxury): ");
+        String taxiType = scanner.next();
+
+        // Find available taxis of the specified type
+        List<Taxi> availableTaxis = findAvailableTaxis(taxis, taxiType);
+
+        if (availableTaxis.isEmpty()) {
+            System.out.println("No available taxis of the specified type.");
+            return;
+        }
+
+        // Display available taxis
+        System.out.println("Available Taxis:");
+        for (int i = 0; i < availableTaxis.size(); i++) {
+            System.out.println((i + 1) + ". " + availableTaxis.get(i).getTaxiId());
+        }
+
+        // Prompt user to choose a taxi
+        System.out.print("Choose a taxi (enter the number): ");
+        int taxiChoice = scanner.nextInt();
+
+        if (taxiChoice < 1 || taxiChoice > availableTaxis.size()) {
+            System.out.println("Invalid taxi choice.");
+            return;
+        }
+
+        // Book the selected taxi
+        Taxi selectedTaxi = availableTaxis.get(taxiChoice - 1);
+        System.out.println("Booking taxi: " + selectedTaxi.getTaxiId());
+
+        // Move the taxi to the pickup node
+        TaxiMovement.moveTaxi(selectedTaxi, pickupNode, mapExample);
+
+        // Move the taxi to the destination node
+        TaxiMovement.moveTaxi(selectedTaxi, destinationNode, mapExample);
+
+        // Display the updated map
+        mapExample.printGrid();
+    }
+
+    private static List<Taxi> findAvailableTaxis(List<Taxi> allTaxis, String taxiType) {
+        List<Taxi> availableTaxis = new ArrayListImplementation<>();
+        for (Taxi taxi : allTaxis) {
+            if (taxi.getClass().getSimpleName().equalsIgnoreCase(taxiType)) {
+                availableTaxis.add(taxi);
+            }
+        }
+        return availableTaxis;
+    }
+
 
     private static List<Taxi> loadTaxisFromCSV() {
         List<Taxi> taxis = new ArrayListImplementation<>();

@@ -4,6 +4,7 @@ import com.ise.epic.Taxi.Taxi;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class GridMapExampleCLI {
     private static final int ROWS = 16;
@@ -18,16 +19,24 @@ public class GridMapExampleCLI {
 
     public void placeTaxisOnMap(List<Taxi> taxis) {
         for (Taxi taxi : taxis) {
-            Random random = new Random();
-            int randomRow, randomCol;
-            do {
-                randomRow = random.nextInt(ROWS);
-                randomCol = random.nextInt(COLS);
-            } while (grid[randomRow][randomCol] != '.');
-            grid[randomRow][randomCol] = 'T';
-            // Set taxi location
-            taxi.setLocation(randomRow, randomCol);
+            placeTaxiOnMap(taxi);
         }
+    }
+
+    public void placeTaxiOnMap(Taxi taxi) {
+        Random random = new Random();
+        int randomRow, randomCol;
+        do {
+            randomRow = random.nextInt(ROWS);
+            randomCol = random.nextInt(COLS);
+        } while (grid[randomRow][randomCol] != '.');
+        grid[randomRow][randomCol] = 'T';
+        // Set taxi location
+        taxi.setLocation(randomRow, randomCol);
+    }
+
+    public void clearGridLocation(int row, int col) {
+        grid[row][col] = '.';
     }
 
     private void initializeGrid() {
@@ -54,5 +63,17 @@ public class GridMapExampleCLI {
             }
             System.out.println();
         }
+    }
+
+    public Set<Taxi> getAvailableTaxis(Node pickup, Graph graph) {
+        Set<Taxi> o = null;
+        return o;
+    }
+
+    public void placeTaxiOnMap(Taxi taxi, int destinationRow, int destinationCol) {
+    }
+
+    public Node findNodeByName(String destinationNodeName) {
+        return null;
     }
 }
