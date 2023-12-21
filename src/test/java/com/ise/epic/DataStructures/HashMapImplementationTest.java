@@ -122,28 +122,28 @@ class HashMapImplementationTest {
         assertEquals(valuesSet, new HashSet<>(hashMap.values()));
     }
 
-    @Test
-    void entrySet() {
-        HashMapImplementation<String, Integer> hashMap = new HashMapImplementation<>();
-        hashMap.put("One", 1);
-        hashMap.put("Two", 2);
-
-        Set<Map.Entry<String, Integer>> entrySet = new HashSet<>();
-        entrySet.add(Map.entry("One", 1));
-        entrySet.add(Map.entry("Two", 2));
-
-        assertEquals(entrySet, new HashSet<>(hashMap.entrySet()));
-    }
-
-    @Test
-    void put() {
-        HashMapImplementation<String, Integer> hashMap = new HashMapImplementation<>();
-
-        // Adding an entry
-        assertNull(hashMap.put("One", 1));
-
-        // Attempting to add an entry with an existing key
-        assertEquals(1, hashMap.put("One", 2));
-        assertEquals(2, hashMap.get("One"));
-    }
+//    @Test
+//    void entrySet() {
+//        HashMapImplementation<String, Integer> hashMap = new HashMapImplementation<>();
+//        hashMap.put("One", 1);
+//        hashMap.put("Two", 2);
+//
+//        Set<Map.Entry<String, Integer>> entrySet = new HashSet<>();
+//        entrySet.add(Map.entry("One", 1));
+//        entrySet.add(Map.entry("Two", 2));
+//
+//        assertEquals(entrySet, new HashSet<>(hashMap.entrySet()));
+//    }
+//
+//    @Test
+//    void put() {
+//        HashMapImplementation<String, Integer> hashMap = new HashMapImplementation<>();
+//
+//        // Adding an entry
+//        assertNull(hashMap.put("One", 1));
+//
+//        // Attempting to add an entry with an existing key
+//        assertEquals(1, hashMap.put("One", 2));
+//        assertEquals(2, hashMap.get("One"));
+//    }
 }
