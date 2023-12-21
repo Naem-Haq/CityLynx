@@ -62,11 +62,7 @@ public class BookingSystem {
         System.out.println("Taxi is picking you up...");
         System.out.println("You are now on the way to your destination...");
 
-        // Step 8: Additional logic for taxi traveling to each node until reaching destination
-
-        // Step 9: Additional logic for charging the user in euros
-
-        // Step 10: User is asked to drop a rating between 1 and 5 stars
+        // Step 8: User is asked to drop a rating between 1 and 5 stars
         System.out.print("Rate your experience (1 to 5 stars): ");
         int rating = scanner.nextInt();
         System.out.println("Thank you for using our service! Your rating: " + rating);
