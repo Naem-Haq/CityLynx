@@ -30,7 +30,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.NAMMERZ }}/interactive_calculator:latest
+          tags: ${{ secrets.NAMMERZ }}/citylynx:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
